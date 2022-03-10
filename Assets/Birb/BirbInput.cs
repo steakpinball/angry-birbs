@@ -1,55 +1,39 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Launch))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(SpringJoint2D))]
 public class BirbInput : MonoBehaviour
 {
+    public float mass = 10;
     public Dragging slingshot;
 
-    private SpringJoint2D spring;
-    private Rigidbody2D rigidbody2d;
-    private Camera mainCamera;
-    private Transform t;
-    private CircleCollider2D circleCollider;
-
-    private bool dragging;
+    private SpringJoint2D _spring;
+    private Rigidbody2D _rigidbody2d;
+    private Camera _mainCamera;
+    private Transform _transform;
 
     private void Awake()
     {
-        t = transform;
-        spring = GetComponent<SpringJoint2D>();
-        rigidbody2d = GetComponent<Rigidbody2D>();
-        mainCamera = Camera.main;
-        circleCollider = GetComponent<CircleCollider2D>();
+        _transform = transform;
+        _spring = GetComponent<SpringJoint2D>();
+        _rigidbody2d = GetComponent<Rigidbody2D>();
+        _mainCamera = Camera.main;
     }
 
-    private void Start()
+    public void Launch()
     {
-        slingshot.UpdateRubber(circleCollider);
-    }
-
-    private void OnMouseDown()
-    {
-        spring.enabled = false;
-        rigidbody2d.bodyType = RigidbodyType2D.Kinematic;
-        dragging = true;
-    }
-
-    public void OnMouseUp()
-    {
-        spring.enabled = true;
-        rigidbody2d.bodyType = RigidbodyType2D.Dynamic;
-        dragging = false;
+        _spring.enabled = true;
+        _rigidbody2d.bodyType = RigidbodyType2D.Dynamic;
+        _rigidbody2d.mass = mass;
         Destroy(this);
         GetComponent<Launch>().enabled = true;
     }
 
     private void Update()
     {
-        if (dragging)
-        {
-            var mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            mouseWorldPosition.z = 0;
-            t.position = slingshot.StretchTo(mouseWorldPosition);
-            slingshot.UpdateRubber(circleCollider);
-        }
+        var mouseWorldPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPosition.z = 0;
+        _transform.position = slingshot.StretchTo(mouseWorldPosition);
     }
 }
