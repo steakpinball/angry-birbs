@@ -44,6 +44,12 @@ public class Dragging : MonoBehaviour
         back.SetPosition(0, back.transform.position);
     }
 
+    public void OnEnable()
+    {
+        front.enabled = true;
+        back.enabled = true;
+    }
+
     public void OnDisable()
     {
         front.enabled = false;

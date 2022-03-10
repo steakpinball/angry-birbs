@@ -507,19 +507,7 @@ MonoBehaviour:
         m_CallState: 2
   died:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3669097991158240015}
-        m_TargetAssemblyTypeName: PigController, Assembly-CSharp
-        m_MethodName: Die
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!95 &-1040756567957340507
 Animator:
   serializedVersion: 4

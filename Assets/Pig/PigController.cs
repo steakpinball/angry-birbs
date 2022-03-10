@@ -12,11 +12,6 @@ public class PigController : MonoBehaviour
         _animator.SetFloat(HealthId, value);
     }
 
-    public void Die()
-    {
-        Destroy(gameObject);
-    }
-
     #region Unity Events
 
     private void Awake()

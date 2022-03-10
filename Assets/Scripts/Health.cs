@@ -15,7 +15,11 @@ public class Health : MonoBehaviour
             var shouldDie = value <= 0;
             currentHealth = shouldDie ? 0 : value;
             healthChanged.Invoke(currentHealth);
-            if (shouldDie) died.Invoke();
+            if (shouldDie)
+            {
+                died.Invoke();
+                Destroy(gameObject);
+            }
         }
     }
 
