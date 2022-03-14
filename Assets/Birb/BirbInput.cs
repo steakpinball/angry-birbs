@@ -23,7 +23,6 @@ public class BirbInput : MonoBehaviour
 
     public void Launch()
     {
-        _spring.enabled = true;
         _rigidbody2d.bodyType = RigidbodyType2D.Dynamic;
         _rigidbody2d.mass = mass;
         Destroy(this);
