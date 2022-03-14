@@ -3,8 +3,11 @@
 /Logs
 /Temp
 /UserSettings
+
 .vs/
 obj/
+
+/.idea
 
 *.sln
 *.csproj
